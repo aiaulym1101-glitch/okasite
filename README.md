@@ -1,0 +1,2787 @@
+<!DOCTYPE html>
+
+<html lang="kk"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>An-Kuy Academy — Әуенді өз ырғағыңмен үйрен</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;display=swap" rel="stylesheet"/>
+<style>
+    /* ==========================================================================
+       1. ДИЗАЙН ЖҮЙЕСІ: LUXURY DARK AESTHETIC & MODERN TOKENS
+       ========================================================================== */
+    :root {
+      --bg-main: #0b0a0f;
+      --bg-surface: #131219;
+      --bg-card: rgba(26, 24, 35, 0.72);
+      --bg-card-hover: rgba(36, 33, 49, 0.88);
+      --bg-glass: rgba(13, 12, 18, 0.82);
+      
+      --text-pure: #ffffff;
+      --text-champagne: #f4eee2;
+      --text-muted: #9f96a9;
+      --text-faint: #675f72;
+      
+      --gold-primary: #f59e0b;
+      --gold-light: #fbbf24;
+      --gold-glow: rgba(245, 158, 11, 0.35);
+      --terracotta: #ea580c;
+      --terracotta-soft: rgba(234, 88, 12, 0.22);
+      
+      --emerald-accent: #10b981;
+      --emerald-soft: rgba(16, 185, 129, 0.16);
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-gold: rgba(245, 158, 11, 0.28);
+      --border-glow: 0 0 16px rgba(245, 158, 11, 0.18);
+      
+      --shadow-premium: 0 20px 45px rgba(0, 0, 0, 0.65);
+      --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45);
+      
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+
+      --font-serif: "Playfair Display", "Cinzel", Georgia, serif;
+      --font-display: "Cinzel", Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-champagne);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 18% 12%, rgba(245, 158, 11, 0.13) 0%, transparent 45%),
+        radial-gradient(circle at 82% 22%, rgba(234, 88, 12, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 75%, rgba(138, 56, 226, 0.07) 0%, transparent 60%),
+        radial-gradient(circle at 85% 90%, rgba(245, 158, 11, 0.08) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    /* Сәндік фондық толқындар (Sound wave lines) */
+    .bg-grid-decor {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-size: 60px 60px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      z-index: 0;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      color: var(--text-pure);
+      letter-spacing: -0.015em;
+      font-weight: 700;
+    }
+
+    button {
+      font-family: var(--font-sans);
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Glassmorphism panel token */
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(245, 158, 11, 0.25);
+    }
+
+    /* ==========================================================================
+       2. TOPBAR (СТИЛЬДІ ЖӘНЕ ЖЕҢІЛ NAV-BAR)
+       ========================================================================== */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 120;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 16px 0;
+      transition: var(--transition);
+    }
+
+    .topbar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #f59e0b 0%, #b45309 60%, #78350f 100%);
+      color: #0d0c12;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 800;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .brand-text-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      line-height: 1.1;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #ffffff 40%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-sub {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--gold-light);
+      font-weight: 700;
+      opacity: 0.9;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-item {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      position: relative;
+      padding: 8px 4px;
+      letter-spacing: 0.02em;
+      transition: var(--transition);
+    }
+
+    .nav-item:hover, .nav-item.active {
+      color: #ffffff;
+    }
+
+    .nav-item.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold-primary), var(--terracotta));
+      border-radius: 2px;
+      box-shadow: 0 0 10px var(--gold-primary);
+    }
+
+    .user-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .icon-btn {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-champagne);
+      font-size: 18px;
+      transition: var(--transition);
+    }
+
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(245, 158, 11, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+    }
+
+    .badge-dot {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 8px;
+      height: 8px;
+      background-color: var(--terracotta);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--terracotta);
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 5px 16px 5px 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .user-profile:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(245, 158, 11, 0.4);
+      box-shadow: 0 0 18px rgba(245, 158, 11, 0.15);
+    }
+
+    .avatar {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, #f59e0b, #ea580c);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b0a0f;
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+    }
+
+    .user-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    /* ==========================================================================
+       3. HERO SECTION & MODERN CRAFTED DOMBYRA
+       ========================================================================== */
+    .hero-section {
+      padding: 70px 0 80px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      background: rgba(245, 158, 11, 0.08);
+      color: var(--gold-light);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+      border: 1px solid rgba(245, 158, 11, 0.28);
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.12);
+    }
+
+    .hero-title {
+      font-size: 54px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #f59e0b 20%, #ea580c 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+      font-style: italic;
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* Аудио-визуализатор декоративті элементтері */
+    .sound-bars-wrap {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      height: 24px;
+      margin-bottom: 24px;
+    }
+
+    .sound-bar {
+      width: 4px;
+      background: linear-gradient(to top, var(--terracotta), var(--gold-primary));
+      border-radius: 4px;
+      animation: soundDance 1.2s infinite ease-in-out alternate;
+    }
+
+    .sound-bar:nth-child(1) { height: 8px; animation-delay: 0.1s; }
+    .sound-bar:nth-child(2) { height: 18px; animation-delay: 0.3s; }
+    .sound-bar:nth-child(3) { height: 26px; animation-delay: 0.2s; }
+    .sound-bar:nth-child(4) { height: 12px; animation-delay: 0.4s; }
+    .sound-bar:nth-child(5) { height: 22px; animation-delay: 0.15s; }
+    .sound-bar:nth-child(6) { height: 14px; animation-delay: 0.5s; }
+
+    @keyframes soundDance {
+      0% { transform: scaleY(0.4); opacity: 0.5; }
+      100% { transform: scaleY(1.1); opacity: 1; }
+    }
+
+    .user-stats-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .stat-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      padding: 16px 22px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+      backdrop-filter: blur(12px);
+      transition: var(--transition);
+    }
+
+    .stat-pill:hover {
+      border-color: rgba(245, 158, 11, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .stat-icon-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .streak-icon {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      color: var(--gold-light);
+    }
+
+    .progress-icon {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: var(--emerald-accent);
+    }
+
+    .stat-meta {
+      flex: 1;
+    }
+
+    .stat-meta .stat-val {
+      font-size: 19px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .stat-meta .stat-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .progress-bar-wrap {
+      margin-top: 8px;
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-primary), var(--terracotta));
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
+      transition: width 0.6s ease;
+    }
+
+    /* Оң жақ: Керемет сәулеленген Домбыра визуалы */
+    .hero-visual-col {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 480px;
+    }
+
+    .hero-radial-glow {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, rgba(234, 88, 12, 0.1) 50%, transparent 75%);
+      filter: blur(28px);
+      animation: pulseGlow 6s ease-in-out infinite alternate;
+      z-index: 1;
+    }
+
+    .aura-ring {
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      border: 1px dashed rgba(245, 158, 11, 0.25);
+      animation: spinRings 40s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes spinRings {
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(0.92); opacity: 0.6; }
+      100% { transform: scale(1.08); opacity: 0.95; }
+    }
+
+    /* CSS Домбыра Art */
+    .dombyra-art {
+      position: relative;
+      z-index: 2;
+      width: 210px;
+      height: 420px;
+      transform: rotate(-12deg);
+      transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    }
+
+    .dombyra-art:hover {
+      transform: rotate(-7deg) scale(1.04);
+    }
+
+    .dombyra-body {
+      position: absolute;
+      bottom: 25px;
+      left: 28px;
+      width: 154px;
+      height: 210px;
+      background: linear-gradient(145deg, #7c2d12 0%, #451a03 55%, #230d02 100%);
+      border-radius: 50% 50% 46% 46% / 60% 60% 40% 40%;
+      box-shadow: inset -6px -6px 20px rgba(0,0,0,0.8), 0 20px 45px rgba(0, 0, 0, 0.7);
+      border: 2px solid rgba(245, 158, 11, 0.45);
+    }
+
+    .dombyra-body-deck {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      background: linear-gradient(180deg, #b45309 0%, #78350f 70%, #451a03 100%);
+      border-radius: 50% 50% 46% 46% / 60% 60% 40% 40%;
+      box-shadow: inset 0 0 12px rgba(0,0,0,0.5);
+    }
+
+    .sound-hole {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      background: #0d0c12;
+      border-radius: 50%;
+      border: 2px solid #fbbf24;
+      box-shadow: inset 0 0 10px #000, 0 0 12px rgba(245, 158, 11, 0.3);
+    }
+
+    .ornament-mark {
+      position: absolute;
+      top: 22%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid rgba(251, 191, 36, 0.5);
+      border-radius: 50%;
+    }
+
+    .dombyra-neck {
+      position: absolute;
+      bottom: 200px;
+      left: 92px;
+      width: 26px;
+      height: 200px;
+      background: linear-gradient(90deg, #451a03 0%, #78350f 50%, #301202 100%);
+      border-radius: 5px 5px 0 0;
+      box-shadow: -3px 0 10px rgba(0,0,0,0.6);
+      border-top: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .dombyra-head {
+      position: absolute;
+      top: -42px;
+      left: -4px;
+      width: 34px;
+      height: 46px;
+      background: #270f03;
+      border-radius: 8px 8px 3px 3px;
+      border: 1.5px solid rgba(245, 158, 11, 0.4);
+    }
+
+    .peg-left, .peg-right {
+      position: absolute;
+      width: 16px;
+      height: 8px;
+      background: linear-gradient(90deg, #fbbf24, #d97706);
+      border-radius: 3px;
+      box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+    }
+    .peg-left { top: 9px; left: -14px; }
+    .peg-right { top: 22px; right: -14px; }
+
+    .fret {
+      position: absolute;
+      width: 100%;
+      height: 1.5px;
+      background: rgba(251, 191, 36, 0.65);
+      box-shadow: 0 0 4px rgba(245, 158, 11, 0.4);
+    }
+    .fret-1 { top: 30px; }
+    .fret-2 { top: 65px; }
+    .fret-3 { top: 105px; }
+    .fret-4 { top: 145px; }
+    .fret-5 { top: 180px; }
+
+    .strings {
+      position: absolute;
+      top: -15px;
+      left: 7px;
+      right: 7px;
+      bottom: -170px;
+      display: flex;
+      justify-content: space-around;
+      pointer-events: none;
+    }
+
+    .string-line {
+      width: 1.5px;
+      height: 350px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbbf24 40%, #ffffff 100%);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+    }
+
+    .bridge {
+      position: absolute;
+      bottom: 50px;
+      left: 48px;
+      width: 58px;
+      height: 9px;
+      background: #180902;
+      border-radius: 2px;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+    }
+
+    .floating-note {
+      position: absolute;
+      color: var(--gold-light);
+      font-size: 26px;
+      animation: floatNote 4s infinite ease-in-out;
+      user-select: none;
+      z-index: 3;
+      filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.7));
+    }
+    .note-1 { top: 30px; left: 15px; animation-delay: 0s; font-size: 32px; }
+    .note-2 { top: 90px; right: 20px; animation-delay: 1.3s; color: var(--terracotta); }
+    .note-3 { bottom: 50px; left: -15px; animation-delay: 2.5s; font-size: 28px; }
+
+    @keyframes floatNote {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-18px) rotate(14deg); }
+    }
+
+    /* Қалқымалы келесі сабақ карточкасы */
+    .hero-floating-card {
+      position: absolute;
+      bottom: 30px;
+      right: -15px;
+      z-index: 5;
+      background: rgba(19, 18, 25, 0.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 16px 22px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-premium), 0 0 25px rgba(245, 158, 11, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      animation: floatBadge 5.5s ease-in-out infinite;
+    }
+
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .play-circle-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-primary), var(--terracotta));
+      color: #0b0a0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      box-shadow: 0 4px 18px rgba(245, 158, 11, 0.5);
+      font-weight: 800;
+    }
+
+    .play-circle-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 24px rgba(245, 158, 11, 0.7);
+    }
+
+    .float-card-content h5 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold-light);
+      margin-bottom: 3px;
+      font-family: var(--font-sans);
+    }
+
+    .float-card-content p {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       4. АСПАПТАР БӨЛІМІ (INSTRUMENTS)
+       ========================================================================== */
+    .section-header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .section-header h2 {
+      font-size: 38px;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .instruments-section {
+      padding: 50px 0 70px;
+      position: relative;
+    }
+
+    .instruments-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .instrument-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 30px 22px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .instrument-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      padding: 1.5px;
+      background: linear-gradient(135deg, transparent, transparent);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+
+    .instrument-card:hover {
+      transform: translateY(-6px);
+      background: var(--bg-card-hover);
+      box-shadow: var(--shadow-premium), 0 0 25px rgba(245, 158, 11, 0.15);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .instrument-card.active {
+      background: linear-gradient(160deg, rgba(35, 30, 48, 0.95), rgba(22, 19, 32, 0.98));
+      border-color: var(--gold-primary);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.28);
+    }
+
+    .instrument-card.active::before {
+      background: linear-gradient(135deg, var(--gold-light), var(--terracotta));
+    }
+
+    .active-badge-check {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-primary), var(--terracotta));
+      color: #0b0a0f;
+      font-size: 13px;
+      font-weight: 800;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
+    }
+
+    .instrument-card.active .active-badge-check {
+      display: flex;
+    }
+
+    .inst-icon-box {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      transition: var(--transition);
+    }
+
+    .instrument-card:hover .inst-icon-box {
+      transform: scale(1.08);
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .instrument-card.active .inst-icon-box {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(234, 88, 12, 0.2));
+      border-color: rgba(245, 158, 11, 0.5);
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+    }
+
+    .instrument-card h3 {
+      font-size: 21px;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .inst-badge {
+      display: inline-block;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      font-weight: 600;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .instrument-card.active .inst-badge {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--gold-light);
+      border-color: rgba(245, 158, 11, 0.35);
+    }
+
+    /* ==========================================================================
+       5. КІТАПХАНА БӨЛІМІ (LEARNING LAYOUT - 2 БАҒАНДЫ)
+       ========================================================================== */
+    .library-section {
+      padding: 40px 0 90px;
+    }
+
+    .learning-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    /* Сол жақ: Сабақтар тізімі мен сүзгілер */
+    .filter-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .filter-btn {
+      padding: 10px 22px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.09);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--gold-primary), var(--terracotta));
+      color: #0b0a0f;
+      font-weight: 700;
+      border-color: transparent;
+      box-shadow: 0 4px 18px rgba(245, 158, 11, 0.4);
+    }
+
+    .lessons-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .lesson-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+    }
+
+    .lesson-card:hover {
+      background: var(--bg-card-hover);
+      transform: translateX(6px);
+      border-color: rgba(245, 158, 11, 0.35);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .lesson-card.selected-lesson {
+      background: linear-gradient(135deg, rgba(36, 30, 48, 0.95), rgba(24, 20, 34, 0.98));
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.22);
+    }
+
+    .lesson-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .lesson-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
+    }
+
+    .lesson-info h4 {
+      font-size: 17px;
+      margin-bottom: 5px;
+      color: #ffffff;
+      font-family: var(--font-sans);
+      font-weight: 700;
+    }
+
+    .lesson-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .lesson-status-tag {
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .status-completed {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+
+    .status-in-progress {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--gold-light);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    .status-new {
+      background: rgba(234, 88, 12, 0.15);
+      color: #fb923c;
+      border: 1px solid rgba(234, 88, 12, 0.35);
+    }
+
+    /* Оң жақ: Sticky Сабақ детальдары блогы (Premium Obsidian & Gold) */
+    .lesson-detail-panel {
+      position: sticky;
+      top: 100px;
+      background: linear-gradient(150deg, #1d1b27 0%, #13121b 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 34px 30px;
+      box-shadow: var(--shadow-premium), 0 0 35px rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.22);
+      backdrop-filter: blur(20px);
+    }
+
+    .panel-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .panel-level-pill {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--gold-light);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: var(--radius-full);
+    }
+
+    .bookmark-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+
+    .bookmark-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .bookmark-btn.saved {
+      background: var(--gold-primary);
+      color: #0b0a0f;
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.6);
+    }
+
+    .panel-title {
+      font-size: 26px;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .panel-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 26px;
+    }
+
+    .panel-progress-box {
+      background: rgba(0, 0, 0, 0.35);
+      padding: 16px 18px;
+      border-radius: var(--radius-md);
+      margin-bottom: 28px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .panel-progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    .panel-progress-track {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .panel-progress-inner {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-primary), var(--terracotta));
+      border-radius: 6px;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
+      transition: width 0.4s ease;
+    }
+
+    .checklist-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .steps-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition);
+    }
+
+    .step-checkbox {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      color: transparent;
+      flex-shrink: 0;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .step-item.completed {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(16, 185, 129, 0.25);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .step-item.completed .step-checkbox {
+      background: var(--emerald-accent);
+      border-color: var(--emerald-accent);
+      color: #0b0a0f;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    }
+
+    .step-item.completed .step-text {
+      text-decoration: line-through;
+      opacity: 0.75;
+    }
+
+    .panel-actions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 14px;
+    }
+
+    .btn-notes-view {
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-notes-view:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(245, 158, 11, 0.4);
+      color: var(--gold-light);
+    }
+
+    .btn-continue-step {
+      background: linear-gradient(135deg, var(--gold-primary), var(--terracotta));
+      color: #0b0a0f;
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+      letter-spacing: 0.02em;
+    }
+
+    .btn-continue-step:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.6);
+      background: linear-gradient(135deg, var(--gold-light), #f97316);
+    }
+
+    /* ==========================================================================
+       6. ҚАУЫМДАСТЫҚ СТАТИСТИКАСЫ (COMMUNITY)
+       ========================================================================== */
+    .audience-section {
+      padding: 70px 0 90px;
+      position: relative;
+    }
+
+    .stats-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .stat-metric-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 38px 28px;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow-card);
+    }
+
+    .stat-metric-card:hover {
+      transform: translateY(-6px);
+      background: var(--bg-card-hover);
+      border-color: rgba(245, 158, 11, 0.35);
+      box-shadow: var(--shadow-premium), 0 0 25px rgba(245, 158, 11, 0.12);
+    }
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: 800;
+      font-family: var(--font-serif);
+      background: linear-gradient(120deg, #ffffff 40%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+
+    .stat-label {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .stat-detail {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       7. МОДАЛЬДЫ ТЕРЕЗЕ (NOTES MODAL - DIALOG)
+       ========================================================================== */
+    dialog.notes-dialog {
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: var(--radius-lg);
+      background: #15131e;
+      color: #ffffff;
+      padding: 0;
+      max-width: 720px;
+      width: 90vw;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 50px rgba(245, 158, 11, 0.15);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    dialog.notes-dialog::backdrop {
+      background: rgba(5, 4, 8, 0.85);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-head {
+      padding: 24px 30px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-head h3 {
+      font-size: 20px;
+      color: #ffffff;
+    }
+
+    .close-dialog-btn {
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 18px;
+      color: var(--text-muted);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition);
+    }
+
+    .close-dialog-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .modal-body-content {
+      padding: 30px;
+    }
+
+    .musical-staff-container {
+      background: #0d0c14;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: var(--radius-md);
+      padding: 30px 24px;
+      margin-bottom: 26px;
+      position: relative;
+      box-shadow: inset 0 0 25px rgba(0,0,0,0.8);
+    }
+
+    .staff-wrapper {
+      position: relative;
+      height: 86px;
+      margin-bottom: 20px;
+    }
+
+    .staff-lines {
+      position: absolute;
+      width: 100%;
+      height: 64px;
+      top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .staff-line {
+      height: 1.5px;
+      background: rgba(251, 191, 36, 0.4);
+      width: 100%;
+      box-shadow: 0 0 4px rgba(245, 158, 11, 0.2);
+    }
+
+    .treble-clef {
+      position: absolute;
+      left: 12px;
+      top: 48%;
+      transform: translateY(-50%);
+      font-size: 52px;
+      font-family: serif;
+      color: var(--gold-light);
+      user-select: none;
+      filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.5));
+    }
+
+    .note-dots-row {
+      position: absolute;
+      left: 80px;
+      right: 20px;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .rendered-note {
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .rendered-note:hover {
+      transform: scale(1.3);
+    }
+
+    .rendered-note .head {
+      width: 15px;
+      height: 11px;
+      background: var(--gold-light);
+      border-radius: 50%;
+      transform: rotate(-25deg);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.8);
+    }
+
+    .rendered-note .stem {
+      position: absolute;
+      width: 2px;
+      height: 34px;
+      background: var(--gold-light);
+      bottom: 5px;
+      right: 1px;
+      box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+    }
+
+    .pos-sol { transform: translateY(-10px); }
+    .pos-la  { transform: translateY(-18px); }
+    .pos-si  { transform: translateY(-25px); }
+    .pos-do  { transform: translateY(-32px); }
+    .pos-re  { transform: translateY(-39px); }
+
+    .tablature-container h4 {
+      font-size: 15px;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    .tab-lines-box {
+      background: #0d0c14;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 18px 22px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      color: var(--gold-light);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tab-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      letter-spacing: 0.12em;
+    }
+
+    .string-name {
+      font-weight: 700;
+      color: #ffffff;
+      width: 90px;
+    }
+
+    /* ==========================================================================
+       8. AI ҰСТАЗ ЖӘНЕ ЧАТ-ТЕРЕЗЕ
+       ========================================================================== */
+    .ai-fab-button {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 990;
+      background: linear-gradient(135deg, var(--gold-primary), var(--terracotta));
+      color: #0b0a0f;
+      padding: 15px 24px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 800;
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.45);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      animation: pulseFab 4s infinite alternate;
+    }
+
+    @keyframes pulseFab {
+      0% { box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4); }
+      100% { box-shadow: 0 12px 35px rgba(245, 158, 11, 0.7); }
+    }
+
+    .ai-fab-button:hover {
+      transform: translateY(-4px) scale(1.04);
+      background: linear-gradient(135deg, var(--gold-light), #f97316);
+    }
+
+    .ai-sparkle {
+      font-size: 20px;
+    }
+
+    .chatbox-widget {
+      position: fixed;
+      bottom: 100px;
+      right: 32px;
+      width: 400px;
+      height: 540px;
+      background: #14121d;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-premium), 0 0 40px rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      display: none;
+      flex-direction: column;
+      z-index: 995;
+      overflow: hidden;
+      animation: popUp 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .chatbox-widget.open {
+      display: flex;
+    }
+
+    @keyframes popUp {
+      from { opacity: 0; transform: translateY(20px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, #221e2d 0%, #171522 100%);
+      color: #fff;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .chat-header-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .teacher-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-primary), var(--terracotta));
+      color: #0b0a0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      font-weight: 800;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+    }
+
+    .chat-header-info h4 {
+      color: #fff;
+      font-size: 16px;
+      line-height: 1.2;
+      font-family: var(--font-sans);
+    }
+
+    .chat-status-sub {
+      font-size: 11px;
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    .close-chat-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .close-chat-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .chat-messages-container {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background: #0d0c14;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      scroll-behavior: smooth;
+    }
+
+    .chat-bubble {
+      max-width: 84%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+
+    .chat-bubble.bot {
+      background: #1c1a27;
+      color: var(--text-champagne);
+      border: 1px solid var(--border-subtle);
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .chat-bubble.user {
+      background: linear-gradient(135deg, var(--gold-primary), var(--terracotta));
+      color: #0b0a0f;
+      font-weight: 600;
+      border-bottom-right-radius: 4px;
+      align-self: flex-end;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    }
+
+    .thinking-bubble {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 12px 16px;
+      background: #1c1a27;
+      border-radius: 16px;
+      border-bottom-left-radius: 4px;
+      width: fit-content;
+      align-self: flex-start;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--gold-light);
+      border-radius: 50%;
+      animation: waveDot 1.4s infinite ease-in-out;
+    }
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes waveDot {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+      40% { transform: translateY(-6px); opacity: 1; }
+    }
+
+    .thinking-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-left: 5px;
+    }
+
+    .chat-suggestions {
+      padding: 10px 16px;
+      background: #14121d;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .chat-suggestions::-webkit-scrollbar {
+      display: none;
+    }
+
+    .suggestion-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--gold-light);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    .suggestion-btn:hover {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: rgba(245, 158, 11, 0.4);
+      color: #ffffff;
+    }
+
+    .chat-input-row {
+      padding: 14px 18px;
+      background: #14121d;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-input-row input {
+      flex: 1;
+      padding: 11px 16px;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      outline: none;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      background: #0d0c14;
+      color: #ffffff;
+      transition: var(--transition);
+    }
+
+    .chat-input-row input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.25);
+    }
+
+    .send-msg-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-primary), var(--terracotta));
+      color: #0b0a0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .send-msg-btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+    }
+
+    /* ==========================================================================
+       9. TOAST NOTIFICATION
+       ========================================================================== */
+    .toast-container {
+      position: fixed;
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100px);
+      background: #1e1b29;
+      color: #ffffff;
+      padding: 14px 28px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 158, 11, 0.25);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .toast-container.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .toast-icon {
+      color: var(--gold-light);
+      font-size: 18px;
+    }
+
+    /* ==========================================================================
+       10. ЖАУАПТЫЛЫҚ (RESPONSIVE)
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-desc { margin: 0 auto 32px; }
+      .user-stats-row { justify-content: center; }
+      .sound-bars-wrap { justify-content: center; }
+      .learning-layout { grid-template-columns: 1fr; }
+      .lesson-detail-panel { position: static; }
+      .instruments-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-card-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 42px; }
+    }
+
+    @media (max-width: 600px) {
+      .instruments-grid { grid-template-columns: 1fr; }
+      .user-stats-row { flex-direction: column; }
+      .chatbox-widget { width: calc(100vw - 32px); right: 16px; bottom: 85px; }
+    }
+  </style>
+</head>
+<body>
+<!-- Фондық декоративтік тор -->
+<div class="bg-grid-decor"></div>
+<!-- ========================================================================
+       TOPBAR (Бас мәзір)
+       ======================================================================== -->
+<header class="topbar">
+<div class="container topbar-content">
+<div class="brand-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<div class="logo-badge">𝄢</div>
+<div class="brand-text-wrap">
+<span class="brand-title">An-Kuy</span>
+<span class="brand-sub">Academy</span>
+</div>
+</div>
+<nav>
+<ul class="nav-links">
+<li><a class="nav-item active" href="#learning">Үйрену</a></li>
+<li><a class="nav-item" href="#instruments">Аспаптар</a></li>
+<li><a class="nav-item" href="#library">Кітапхана</a></li>
+<li><a class="nav-item" href="#community">Қауымдастық</a></li>
+</ul>
+</nav>
+<div class="user-actions">
+<button class="icon-btn" onclick="showToast('Жаңа хабарламалар жоқ')" title="Хабарламалар">
+          🔔
+          <span class="badge-dot"></span>
+</button>
+<div class="user-profile" title="Профиль параметрлері">
+<div class="avatar">А</div>
+<span class="user-name">Ақмарал</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ========================================================================
+       HERO SECTION (Басты экран)
+       ======================================================================== -->
+<section class="hero-section" id="learning">
+<div class="container hero-grid">
+<div class="hero-text-col">
+<div class="hero-tag">✨ An-Kuy — Қазақтың төл музыкалық академиясы</div>
+<div class="sound-bars-wrap">
+<div class="sound-bar"></div>
+<div class="sound-bar"></div>
+<div class="sound-bar"></div>
+<div class="sound-bar"></div>
+<div class="sound-bar"></div>
+<div class="sound-bar"></div>
+</div>
+<h1 class="hero-title">Әуенді өз <span>ырғағыңмен</span> үйрен</h1>
+<p class="hero-desc">
+          Домбыра, қобыз, гитара мен фортепианоны заманауи интерактивті ноталармен, қадамдық шеберлік сабақтарымен және ақылды AI ұстаздың жеке қолдауымен меңгеріңіз.
+        </p>
+<div class="user-stats-row">
+<div class="stat-pill">
+<div class="stat-icon-wrap streak-icon">🔥</div>
+<div class="stat-meta">
+<div class="stat-val">7 күн</div>
+<div class="stat-sub">Үздіксіз оқу (Streak)</div>
+</div>
+</div>
+<div class="stat-pill">
+<div class="stat-icon-wrap progress-icon">🎯</div>
+<div class="stat-meta">
+<div class="stat-val" id="streakProgressText">16 / 30 сабақ</div>
+<div class="stat-sub">Айлық мақсат</div>
+<div class="progress-bar-wrap">
+<div class="progress-bar-fill" id="monthlyProgressBar" style="width: 53%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Hero Visual: Заманауи сәулеленген Домбыра моделі -->
+<div class="hero-visual-col">
+<div class="hero-radial-glow"></div>
+<div class="aura-ring"></div>
+<!-- Қалқымалы алтын ноталар -->
+<span class="floating-note note-1">♪</span>
+<span class="floating-note note-2">♫</span>
+<span class="floating-note note-3">♩</span>
+<!-- Домбыра моделі -->
+<div class="dombyra-art" title="Қазақ домбырасы — An-Kuy Edition">
+<!-- Шанақ -->
+<div class="dombyra-body">
+<div class="dombyra-body-deck">
+<div class="ornament-mark"></div>
+<div class="sound-hole"></div>
+<div class="bridge"></div>
+</div>
+</div>
+<!-- Мойын (гриф) -->
+<div class="dombyra-neck">
+<!-- Бас бөлігі және алтын құлақтар -->
+<div class="dombyra-head">
+<div class="peg-left"></div>
+<div class="peg-right"></div>
+</div>
+<!-- Алтын ладтар (пернелер) -->
+<div class="fret fret-1"></div>
+<div class="fret fret-2"></div>
+<div class="fret fret-3"></div>
+<div class="fret fret-4"></div>
+<div class="fret fret-5"></div>
+<!-- Жарқыраған ішектер -->
+<div class="strings">
+<div class="string-line"></div>
+<div class="string-line"></div>
+</div>
+</div>
+</div>
+<!-- Келесі сабақ карточкасы -->
+<div class="hero-floating-card">
+<button class="play-circle-btn" onclick="scrollToLessons()">▶</button>
+<div class="float-card-content">
+<h5>Келесі сабақ</h5>
+<p>«Адай» күйі — 1-бөлім</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================
+       АСПАПТАР БӨЛІМІ (INSTRUMENTS)
+       ======================================================================== -->
+<section class="instruments-section" id="instruments">
+<div class="container">
+<div class="section-header">
+<h2>Аспапты таңдаңыз</h2>
+<p>Өзіңізге ұнайтын бағытты белгілеп, жаңа интерактивті сабақтар жинағын ашыңыз</p>
+</div>
+<div class="instruments-grid" id="instrumentsGrid">
+<!-- JS арқылы динамикалық толықтырылады -->
+</div>
+</div>
+</section>
+<!-- ========================================================================
+       КІТАПХАНА БӨЛІМІ (LEARNING LAYOUT - 2 БАҒАНДЫ)
+       ======================================================================== -->
+<section class="library-section" id="library">
+<div class="container">
+<div class="section-header" style="text-align: left; margin-bottom: 28px;">
+<h2 id="currentCategoryTitle">Домбыра сабақтары</h2>
+<p>Теориядан шеберлікке дейінгі қадамдық интерактивті оқу жолы</p>
+</div>
+<div class="learning-layout">
+<!-- Сол жақ: Сабақтар тізімі мен сүзгілер -->
+<div class="learning-left-col">
+<div class="filter-bar">
+<button class="filter-btn active" onclick="setFilter('all')">Барлығы</button>
+<button class="filter-btn" onclick="setFilter('new')">Жаңа</button>
+<button class="filter-btn" onclick="setFilter('saved')">Сақталғандар</button>
+</div>
+<div class="lessons-list" id="lessonsList">
+<!-- Сабақ карточкалары динамикалық түрде осында рендерленеді -->
+</div>
+</div>
+<!-- Оң жақ: Sticky Сабақ детальдары блогы -->
+<aside class="lesson-detail-panel" id="detailPanel">
+<div class="panel-top-row">
+<span class="panel-level-pill" id="panelLevel">Бастауыш</span>
+<button class="bookmark-btn" id="panelBookmarkBtn" onclick="toggleSaveCurrentLesson()" title="Сабақты сақтау">
+              🔖
+            </button>
+</div>
+<h3 class="panel-title" id="panelTitle">Домбыра тарту негіздері</h3>
+<p class="panel-desc" id="panelDesc">
+            Оң қолдың қағысы мен сол қолдың пернелерді дұрыс басу әдістерін, алғашқы қарапайым әуендерді үйренеміз.
+          </p>
+<div class="panel-progress-box">
+<div class="panel-progress-labels">
+<span>Меңгеру деңгейі</span>
+<span id="panelProgressPercent">50%</span>
+</div>
+<div class="panel-progress-track">
+<div class="panel-progress-inner" id="panelProgressBar" style="width: 50%;"></div>
+</div>
+</div>
+<div class="checklist-title">Қадамдық жоспар</div>
+<ul class="steps-checklist" id="panelChecklist">
+<!-- Чеклист қадамдары JS арқылы рендерленеді -->
+</ul>
+<div class="panel-actions-grid">
+<button class="btn-notes-view" onclick="openNotesModal()">
+              🎼 Нота қарау
+            </button>
+<button class="btn-continue-step" onclick="advanceLessonProgress()">
+              ⚡ Жалғастыру
+            </button>
+</div>
+</aside>
+</div>
+</div>
+</section>
+<!-- ========================================================================
+       ҚАУЫМДАСТЫҚ ЖӘНЕ СТАТИСТИКА (AUDIENCE)
+       ======================================================================== -->
+<section class="audience-section" id="community">
+<div class="container">
+<div class="section-header">
+<h2>An-Kuy қауымдастығы</h2>
+<p>Бүкіл ел бойынша мыңдаған оқушы күн сайын бізбен бірге төл өнерімізді меңгеруде</p>
+</div>
+<div class="stats-card-grid">
+<div class="stat-metric-card">
+<div class="stat-number">12,500+</div>
+<div class="stat-label">Белсенді оқушы</div>
+<div class="stat-detail">Күнделікті сабақ оқитын қолданушылар</div>
+</div>
+<div class="stat-metric-card">
+<div class="stat-number">400+</div>
+<div class="stat-label">Интерактивті сабақ</div>
+<div class="stat-detail">Барлық деңгейге арналған бейне және ноталар</div>
+</div>
+<div class="stat-metric-card">
+<div class="stat-number">4.9 ★</div>
+<div class="stat-label">Жалпы бағалау</div>
+<div class="stat-detail">Оқушылар мен кәсіби музыка ұстаздарының пікірі</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================
+       МОДАЛЬДЫ ТЕРЕЗЕ (NOTES MODAL - DIALOG)
+       ======================================================================== -->
+<dialog class="notes-dialog" id="notesModal">
+<div class="modal-head">
+<h3 id="modalNotesTitle">🎼 Интерактивті нота парағы</h3>
+<button class="close-dialog-btn" onclick="closeNotesModal()">✕</button>
+</div>
+<div class="modal-body-content">
+<!-- ТАЗА CSS НОТА СЫЗЫҚТАРЫ (STAFF & NOTES) -->
+<div class="musical-staff-container">
+<div class="staff-wrapper">
+<div class="staff-lines">
+<div class="staff-line"></div>
+<div class="staff-line"></div>
+<div class="staff-line"></div>
+<div class="staff-line"></div>
+<div class="staff-line"></div>
+</div>
+<div class="treble-clef">𝄞</div>
+<div class="note-dots-row">
+<div class="rendered-note pos-sol" title="Соль (G)">
+<div class="head"></div><div class="stem"></div>
+</div>
+<div class="rendered-note pos-la" title="Ля (A)">
+<div class="head"></div><div class="stem"></div>
+</div>
+<div class="rendered-note pos-si" title="Си (B)">
+<div class="head"></div><div class="stem"></div>
+</div>
+<div class="rendered-note pos-do" title="До (C)">
+<div class="head"></div><div class="stem"></div>
+</div>
+<div class="rendered-note pos-re" title="Ре (D)">
+<div class="head"></div><div class="stem"></div>
+</div>
+</div>
+</div>
+<p style="font-size: 13px; color: var(--text-muted); text-align: center;">
+          Ноталардың үстіне тышқанды апарсаңыз, нота атауы мен орналасуы көрінеді.
+        </p>
+</div>
+<!-- ТАБУЛАТУРА (TABS) ЦИФРЛАРЫ -->
+<div class="tablature-container">
+<h4>Пернелер кестесі (An-Kuy Fretboard Tabs):</h4>
+<div class="tab-lines-box" id="tabContentBox">
+<div class="tab-row">
+<span class="string-name">1-ішек (D):</span>
+<span>|---0---2---3---5---7---5---3---2---|</span>
+</div>
+<div class="tab-row">
+<span class="string-name">2-ішек (G):</span>
+<span>|---0---0---2---3---5---3---2---0---|</span>
+</div>
+</div>
+</div>
+</div>
+</dialog>
+<!-- ========================================================================
+       AI ҰСТАЗ ЖӘНЕ ЧАТ-ТЕРЕЗЕ
+       ======================================================================== -->
+<button class="ai-fab-button" onclick="toggleChatbox()">
+<span class="ai-sparkle">✨</span>
+<span>AI ұстаздан сұрау</span>
+</button>
+<div class="chatbox-widget" id="chatboxWidget">
+<div class="chat-header">
+<div class="chat-header-info">
+<div class="teacher-avatar">🎓</div>
+<div>
+<h4>An-Kuy AI Ұстаз</h4>
+<span class="chat-status-sub">Әрқашан жеке көмекке дайын</span>
+</div>
+</div>
+<button class="close-chat-btn" onclick="toggleChatbox()">✕</button>
+</div>
+<!-- Чат хабарламалары -->
+<div class="chat-messages-container" id="chatMessages">
+<div class="chat-bubble bot">
+        Сәлем, Ақмарал! Мен сенің An-Kuy музыкалық AI ұстазыңмын. Аспап үйренуде қандай сұрақтарың бар? Қағыс, нота немесе күй құрылымы бойынша көмектесуге дайынмын!
+      </div>
+</div>
+<!-- Ұсынылған сұрақтар (Suggestions) -->
+<div class="chat-suggestions">
+<button class="suggestion-btn" onclick="sendSuggestion('Қағысты түсіндір')">Қағысты түсіндір</button>
+<button class="suggestion-btn" onclick="sendSuggestion('Қай бұрау керек?')">Қай бұрау керек?</button>
+<button class="suggestion-btn" onclick="sendSuggestion('Қолды қалай дұрыс қояды?')">Қол қойылымы</button>
+</div>
+<!-- Енгізу өрісі -->
+<div class="chat-input-row">
+<input id="chatInput" onkeydown="handleChatKey(event)" placeholder="Сұрағыңызды жазыңыз..." type="text"/>
+<button class="send-msg-btn" onclick="sendUserMessage()">➤</button>
+</div>
+</div>
+<!-- ========================================================================
+       TOAST NOTIFICATION ЭЛЕМЕНТІ
+       ======================================================================== -->
+<div class="toast-container" id="toastBox">
+<span class="toast-icon">✨</span>
+<span id="toastMessage">Хабарлама</span>
+</div>
+<!-- ========================================================================
+       JAVASCRIPT: ИНТЕРАКТИВТІ ФУНКЦИЯЛАР ЖӘНЕ ДЕРЕКТЕР
+       ======================================================================== -->
+<script>
+    /* --------------------------------------------------------------------------
+       1. ДЕРЕКТЕР БАЗАСЫ (4 АСПАП, ӘРҚАЙСЫСЫНДА САБАҚТАР ЖИНАҒЫ)
+       -------------------------------------------------------------------------- */
+    const instrumentsData = [
+      {
+        id: "dombyra",
+        name: "Домбыра",
+        icon: "🪕",
+        badge: "Ұлттық аспап",
+        lessons: [
+          {
+            id: "d1",
+            title: "Домбыра ұстау және оң қол қағысы",
+            level: "Бастауыш",
+            status: "completed",
+            progress: 100,
+            saved: true,
+            iconBg: "rgba(245, 158, 11, 0.2)",
+            desc: "Аспапты дұрыс отырып ұстау тәртібі, білекті бос ұстау және негізгі қарапайым қағыс техникасы.",
+            steps: [
+              { text: "Аспапты ыңғайлы орналастыру", done: true },
+              { text: "Оң қол білегінің серпінділігі", done: true },
+              { text: "Алғашқы төмен және жоғары қағыс", done: true }
+            ],
+            tabs: [
+              "1-ішек (D): |---0---0---0---0---0---|",
+              "2-ішек (G): |---0---0---0---0---0---|"
+            ]
+          },
+          {
+            id: "d2",
+            title: "«Кеңес» күйінің басталуы",
+            level: "Бастауыш",
+            status: "in-progress",
+            progress: 50,
+            saved: true,
+            iconBg: "rgba(234, 88, 12, 0.2)",
+            desc: "Қазақтың көне әрі танымал күйінің алғашқы буынын, бас пернелердің басылу ретін үйрену.",
+            steps: [
+              { text: "1-перне мен 2-пернені басу", done: true },
+              { text: "Қос қағыс ырғағын сақтау", done: true },
+              { text: "Бас буынды тұтас ойнау", done: false },
+              { text: "Метрономмен бекіту", done: false }
+            ],
+            tabs: [
+              "1-ішек (D): |---0---2---3---2---0---|",
+              "2-ішек (G): |---0---0---2---0---0---|"
+            ]
+          },
+          {
+            id: "d3",
+            title: "«Адай» күйі — 1-бөлім",
+            level: "Орташа",
+            status: "new",
+            progress: 0,
+            saved: false,
+            iconBg: "rgba(245, 158, 11, 0.25)",
+            desc: "Құрманғазының әйгілі екпінді күйі. Жылдам қағыстар мен төгілме күй өнерінің негіздері.",
+            steps: [
+              { text: "Төгілме қағысты меңгеру", done: false },
+              { text: "Жылдамдық екпінін арттыру", done: false },
+              { text: "Күй сағасына өту", done: false }
+            ],
+            tabs: [
+              "1-ішек (D): |---5---7---8---7---5---|",
+              "2-ішек (G): |---0---5---7---5---0---|"
+            ]
+          },
+          {
+            id: "d4",
+            title: "Шертер мен домбырадағы шерту стилі",
+            level: "Жоғары",
+            status: "new",
+            progress: 0,
+            saved: false,
+            iconBg: "rgba(168, 85, 247, 0.2)",
+            desc: "Тәттімбет шертпе күйлерінің сырлы ырғақтары. Саусақпен дара шерту шеберлігі.",
+            steps: [
+              { text: "Шертпе қағыстың нәзіктігі", done: false },
+              { text: "Әуенді іріктеу", done: false }
+            ],
+            tabs: [
+              "1-ішек (D): |---7---9---10---9---7---|",
+              "2-ішек (G): |---7---7---9----7---7---|"
+            ]
+          }
+        ]
+      },
+      {
+        id: "guitar",
+        name: "Гитара",
+        icon: "🎸",
+        badge: "Акустика / Классика",
+        lessons: [
+          {
+            id: "g1",
+            title: "Негізгі аккордтар: Am, Dm, E",
+            level: "Бастауыш",
+            status: "completed",
+            progress: 100,
+            saved: true,
+            iconBg: "rgba(99, 102, 241, 0.2)",
+            desc: "Кез келген әнді ойнауға негіз болатын алғашқы қарапайым аккордтар және саусақ қойылымы.",
+            steps: [
+              { text: "Am аккордының саусақтары", done: true },
+              { text: "Dm және E аккордтарына ауысу", done: true },
+              { text: "Таза дыбыс шығару", done: true }
+            ],
+            tabs: [
+              "E|---0---1---0---| B|---1---3---0---|",
+              "G|---2---2---1---| D|---2---0---2---|"
+            ]
+          },
+          {
+            id: "g2",
+            title: "«Шестерка» классикалық қағысы",
+            level: "Бастауыш",
+            status: "in-progress",
+            progress: 25,
+            saved: false,
+            iconBg: "rgba(139, 92, 246, 0.2)",
+            desc: "Танымал 6 соққылы қағыс ырғағы мен глушение (дыбысты өшіру) әдісі.",
+            steps: [
+              { text: "Төмен-жоғары ырғақ санағы", done: true },
+              { text: "Алақанмен перделеу", done: false },
+              { text: "Аккордтармен үйлестіру", done: false },
+              { text: "Әнді шырқап көру", done: false }
+            ],
+            tabs: [
+              "Strum pattern: ↓ ↓↑ ↑↓↑ (Am -> C -> G -> F)"
+            ]
+          },
+          {
+            id: "g3",
+            title: "Бас жолдары және Фингерстайл",
+            level: "Орташа",
+            status: "new",
+            progress: 0,
+            saved: true,
+            iconBg: "rgba(236, 72, 153, 0.2)",
+            desc: "Әуен мен аккомпанементті бір уақытта ойнау тәсілі.",
+            steps: [
+              { text: "Бас ішекті бөліп тарту", done: false },
+              { text: "Үштік саусақ қозғалысы", done: false }
+            ],
+            tabs: [
+              "E|---3---2---0-------|",
+              "A|---------------3---|"
+            ]
+          }
+        ]
+      },
+      {
+        id: "qobyz",
+        name: "Қобыз",
+        icon: "🎻",
+        badge: "Киелі ысқышты",
+        lessons: [
+          {
+            id: "q1",
+            title: "Қылқобыз құрылысы мен ысқыш тартысы",
+            level: "Бастауыш",
+            status: "completed",
+            progress: 100,
+            saved: false,
+            iconBg: "rgba(16, 185, 129, 0.2)",
+            desc: "Аттың қылынан жасалған ішектерді ысқышпен үндестірудің алғашқы құпиялары.",
+            steps: [
+              { text: "Ысқышты ұстау", done: true },
+              { text: "Қылға түсетін қысымды бақылау", done: true }
+            ],
+            tabs: [
+              "1-ішек: Жұмсақ ысқыш тартысы ~ ~ ~",
+              "2-ішек: Ашық үн тербелісі"
+            ]
+          },
+          {
+            id: "q2",
+            title: "Қорқыт ата сарыны",
+            level: "Орташа",
+            status: "in-progress",
+            progress: 50,
+            saved: true,
+            iconBg: "rgba(245, 158, 11, 0.2)",
+            desc: "Терең философиялық күңіреністі дыбыстарды, тырнақ жанасуымен пернесіз ойнау.",
+            steps: [
+              { text: "Тырнақ қырымен жанасу", done: true },
+              { text: "Вибрато тәсілі", done: true },
+              { text: "Мұңды сарын үйлесімі", done: false }
+            ],
+            tabs: [
+              "Қыл үні: [C3] ~~~ [G3] ~~~ [A3] ~~~"
+            ]
+          },
+          {
+            id: "q3",
+            title: "«Аққу» сарыны",
+            level: "Жоғары",
+            status: "new",
+            progress: 0,
+            saved: false,
+            iconBg: "rgba(234, 88, 12, 0.2)",
+            desc: "Аққудың қанатының қағысы мен құс даусын келтіретін виртуоздық тәсілдер.",
+            steps: [
+              { text: "Флажолет дыбыстары", done: false },
+              { text: "Қос ішектегі флажолет", done: false }
+            ],
+            tabs: [
+              "Harmonics: <12> <7> <5>"
+            ]
+          }
+        ]
+      },
+      {
+        id: "piano",
+        name: "Фортепиано",
+        icon: "🎹",
+        badge: "Клавишты аспап",
+        lessons: [
+          {
+            id: "p1",
+            title: "Клавиштер мен До мажор гаммасы",
+            level: "Бастауыш",
+            status: "completed",
+            progress: 100,
+            saved: false,
+            iconBg: "rgba(14, 165, 233, 0.2)",
+            desc: "Фортепиано клавиатурасындағы ноталардың орны және екі қол саусақтарының нөмірленуі.",
+            steps: [
+              { text: "Бірінші октава 'До' нотасы", done: true },
+              { text: "1-2-3-1-2-3-4-5 саусақ жүйесі", done: true }
+            ],
+            tabs: [
+              "Right Hand: C - D - E - F - G - A - B - C",
+              "Left Hand:  C - B - A - G - F - E - D - C"
+            ]
+          },
+          {
+            id: "p2",
+            title: "Екі қолды тәуелсіз үйлестіру",
+            level: "Бастауыш",
+            status: "in-progress",
+            progress: 25,
+            saved: true,
+            iconBg: "rgba(148, 163, 184, 0.2)",
+            desc: "Сол қолмен бас аккордтарын ұстап, оң қолмен қарапайым әуен ойнау.",
+            steps: [
+              { text: "Сол қолда қарапайым бас", done: true },
+              { text: "Оң қолда жеке әуен", done: false },
+              { text: "Қолдарды синхрондау", done: false }
+            ],
+            tabs: [
+              "Treble: E - G - A - G | E - D - C - D",
+              "Bass:   C --- G ---   | A --- F ---"
+            ]
+          },
+          {
+            id: "p3",
+            title: "Арпеджио және педаль техникасы",
+            level: "Орташа",
+            status: "new",
+            progress: 0,
+            saved: false,
+            iconBg: "rgba(192, 132, 252, 0.2)",
+            desc: "Дыбысты созу педалін дұрыс басу және әдемі толқынды арпеджио ойнау.",
+            steps: [
+              { text: "Оң жақ педаль жұмысы", done: false },
+              { text: "Толқынды аккордтар", done: false }
+            ],
+            tabs: [
+              "Arpeggio: C - E - G - C - E - G (Up & Down)"
+            ]
+          }
+        ]
+      }
+    ];
+
+    /* --------------------------------------------------------------------------
+       2. КҮЙ МЕН АҒЫМДЫ ТАҢДАУЛАР (STATE)
+       -------------------------------------------------------------------------- */
+    let currentInstrumentId = "dombyra";
+    let currentFilter = "all";
+    let selectedLessonId = "d2";
+
+    /* --------------------------------------------------------------------------
+       3. ИНИЦИАЛИЗАЦИЯ ЖӘНЕ РЕНДЕРИНГ ФУНКЦИЯЛАРЫ
+       -------------------------------------------------------------------------- */
+    window.addEventListener("DOMContentLoaded", () => {
+      renderInstruments();
+      renderLessons();
+      updateDetailPanel();
+    });
+
+    function renderInstruments() {
+      const grid = document.getElementById("instrumentsGrid");
+      grid.innerHTML = "";
+
+      instrumentsData.forEach(inst => {
+        const isActive = inst.id === currentInstrumentId;
+        const card = document.createElement("div");
+        card.className = `instrument-card ${isActive ? "active" : ""}`;
+        card.onclick = () => selectInstrument(inst.id);
+
+        card.innerHTML = `
+          <div class="active-badge-check">✓</div>
+          <div class="inst-icon-box">${inst.icon}</div>
+          <h3>${inst.name}</h3>
+          <span class="inst-badge">${inst.badge}</span>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function selectInstrument(instId) {
+      currentInstrumentId = instId;
+      const currentInst = instrumentsData.find(i => i.id === instId);
+      
+      document.getElementById("currentCategoryTitle").textContent = `${currentInst.name} сабақтары`;
+      
+      if (currentInst.lessons.length > 0) {
+        selectedLessonId = currentInst.lessons[0].id;
+      }
+
+      renderInstruments();
+      renderLessons();
+      updateDetailPanel();
+      showToast(`${currentInst.name} аспабы таңдалды`);
+    }
+
+    function setFilter(filterType) {
+      currentFilter = filterType;
+      const btns = document.querySelectorAll(".filter-btn");
+      btns.forEach(b => b.classList.remove("active"));
+      event.target.classList.add("active");
+
+      renderLessons();
+    }
+
+    function renderLessons() {
+      const list = document.getElementById("lessonsList");
+      list.innerHTML = "";
+
+      const currentInst = instrumentsData.find(i => i.id === currentInstrumentId);
+      if (!currentInst) return;
+
+      let filteredLessons = currentInst.lessons;
+
+      if (currentFilter === "new") {
+        filteredLessons = filteredLessons.filter(l => l.status === "new");
+      } else if (currentFilter === "saved") {
+        filteredLessons = filteredLessons.filter(l => l.saved);
+      }
+
+      if (filteredLessons.length === 0) {
+        list.innerHTML = `<div style="padding: 36px; text-align: center; color: var(--text-muted); background: var(--bg-card); border-radius: var(--radius-md); border: 1px dashed var(--border-subtle);">Бұл сүзгі бойынша сабақтар табылмады.</div>`;
+        return;
+      }
+
+      filteredLessons.forEach(lesson => {
+        const isSelected = lesson.id === selectedLessonId;
+        const card = document.createElement("div");
+        card.className = `lesson-card ${isSelected ? "selected-lesson" : ""}`;
+        card.onclick = () => selectLesson(lesson.id);
+
+        let statusText = "Жаңа сабақ";
+        let statusClass = "status-new";
+        if (lesson.status === "completed") {
+          statusText = "Аяқталды";
+          statusClass = "status-completed";
+        } else if (lesson.status === "in-progress") {
+          statusText = "Жалғастыру";
+          statusClass = "status-in-progress";
+        }
+
+        card.innerHTML = `
+          <div class="lesson-left">
+            <div class="lesson-icon" style="background: ${lesson.iconBg}">
+              ${lesson.saved ? "⭐" : "🎵"}
+            </div>
+            <div class="lesson-info">
+              <h4>${lesson.title}</h4>
+              <div class="lesson-meta-row">
+                <span>Деңгей: ${lesson.level}</span>
+                <span>•</span>
+                <span>${lesson.progress}% меңгерілді</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="lesson-status-tag ${statusClass}">${statusText}</span>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    function selectLesson(lessonId) {
+      selectedLessonId = lessonId;
+      renderLessons();
+      updateDetailPanel();
+    }
+
+    function updateDetailPanel() {
+      const currentInst = instrumentsData.find(i => i.id === currentInstrumentId);
+      const lesson = currentInst ? currentInst.lessons.find(l => l.id === selectedLessonId) : null;
+
+      if (!lesson) return;
+
+      document.getElementById("panelLevel").textContent = lesson.level;
+      document.getElementById("panelTitle").textContent = lesson.title;
+      document.getElementById("panelDesc").textContent = lesson.desc;
+      document.getElementById("panelProgressPercent").textContent = `${lesson.progress}%`;
+      document.getElementById("panelProgressBar").style.width = `${lesson.progress}%`;
+
+      const bookmarkBtn = document.getElementById("panelBookmarkBtn");
+      if (lesson.saved) {
+        bookmarkBtn.classList.add("saved");
+        bookmarkBtn.innerHTML = "★";
+        bookmarkBtn.title = "Сақталғандардан алып тастау";
+      } else {
+        bookmarkBtn.classList.remove("saved");
+        bookmarkBtn.innerHTML = "🔖";
+        bookmarkBtn.title = "Сақтау";
+      }
+
+      const checklistUl = document.getElementById("panelChecklist");
+      checklistUl.innerHTML = "";
+      lesson.steps.forEach((step, idx) => {
+        const li = document.createElement("li");
+        li.className = `step-item ${step.done ? "completed" : ""}`;
+        li.innerHTML = `
+          <div class="step-checkbox">${step.done ? "✓" : ""}</div>
+          <span class="step-text">${idx + 1}. ${step.text}</span>
+        `;
+        checklistUl.appendChild(li);
+      });
+    }
+
+    /* --------------------------------------------------------------------------
+       4. ЛОГИКА: ЖАЛҒАСТЫРУ, САҚТАУ ЖӘНЕ TOAST ХАБАРЛАМА
+       -------------------------------------------------------------------------- */
+    function advanceLessonProgress() {
+      const currentInst = instrumentsData.find(i => i.id === currentInstrumentId);
+      const lesson = currentInst ? currentInst.lessons.find(l => l.id === selectedLessonId) : null;
+
+      if (!lesson) return;
+
+      if (lesson.progress >= 100) {
+        showToast("Құттықтаймыз! Бұл сабақ толық аяқталған.");
+        return;
+      }
+
+      lesson.progress = Math.min(100, lesson.progress + 25);
+      lesson.status = lesson.progress === 100 ? "completed" : "in-progress";
+
+      const nextUndone = lesson.steps.find(s => !s.done);
+      if (nextUndone) {
+        nextUndone.done = true;
+      }
+
+      if (lesson.progress === 100) {
+        lesson.steps.forEach(s => s.done = true);
+      }
+
+      renderLessons();
+      updateDetailPanel();
+      showToast(`Прогресс артты: +25% (${lesson.progress}%) ✨`);
+    }
+
+    function toggleSaveCurrentLesson() {
+      const currentInst = instrumentsData.find(i => i.id === currentInstrumentId);
+      const lesson = currentInst ? currentInst.lessons.find(l => l.id === selectedLessonId) : null;
+
+      if (!lesson) return;
+
+      lesson.saved = !lesson.saved;
+      updateDetailPanel();
+      renderLessons();
+
+      if (lesson.saved) {
+        showToast("Сабақ таңдаулыларға сақталды ⭐");
+      } else {
+        showToast("Сабақ сақталғандардан алынды");
+      }
+    }
+
+    let toastTimer = null;
+    function showToast(message) {
+      const toast = document.getElementById("toastBox");
+      const msgElem = document.getElementById("toastMessage");
+      msgElem.textContent = message;
+
+      toast.classList.add("show");
+
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2200);
+    }
+
+    function scrollToLessons() {
+      document.getElementById("library").scrollIntoView({ behavior: "smooth" });
+    }
+
+    /* --------------------------------------------------------------------------
+       5. МОДАЛЬДЫ ТЕРЕЗЕ (NOTES MODAL - DIALOG)
+       -------------------------------------------------------------------------- */
+    const notesModal = document.getElementById("notesModal");
+
+    function openNotesModal() {
+      const currentInst = instrumentsData.find(i => i.id === currentInstrumentId);
+      const lesson = currentInst ? currentInst.lessons.find(l => l.id === selectedLessonId) : null;
+
+      if (lesson) {
+        document.getElementById("modalNotesTitle").textContent = `🎼 ${lesson.title} — Ноталар мен Пернелер`;
+        
+        const tabBox = document.getElementById("tabContentBox");
+        tabBox.innerHTML = "";
+        lesson.tabs.forEach(t => {
+          const div = document.createElement("div");
+          div.className = "tab-row";
+          div.textContent = t;
+          tabBox.appendChild(div);
+        });
+      }
+
+      notesModal.showModal();
+    }
+
+    function closeNotesModal() {
+      notesModal.close();
+    }
+
+    notesModal.addEventListener("click", (e) => {
+      const rect = notesModal.getBoundingClientRect();
+      if (
+        e.clientX < rect.left ||
+        e.clientX > rect.right ||
+        e.clientY < rect.top ||
+        e.clientY > rect.bottom
+      ) {
+        notesModal.close();
+      }
+    });
+
+    /* --------------------------------------------------------------------------
+       6. AI ҰСТАЗ ИНТЕГРАЦИЯСЫ (GROQ API & SMART FALLBACK)
+       -------------------------------------------------------------------------- */
+    let isChatOpen = false;
+    const chatboxWidget = document.getElementById("chatboxWidget");
+    const chatMessages = document.getElementById("chatMessages");
+    const chatInput = document.getElementById("chatInput");
+
+    function toggleChatbox() {
+      isChatOpen = !isChatOpen;
+      if (isChatOpen) {
+        chatboxWidget.classList.add("open");
+        chatInput.focus();
+      } else {
+        chatboxWidget.classList.remove("open");
+      }
+    }
+
+    function handleChatKey(e) {
+      if (e.key === "Enter") {
+        sendUserMessage();
+      }
+    }
+
+    function sendSuggestion(text) {
+      chatInput.value = text;
+      sendUserMessage();
+    }
+
+    async function sendUserMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+
+      appendMessage(text, "user");
+      chatInput.value = "";
+
+      const thinkingIndicator = document.createElement("div");
+      thinkingIndicator.className = "thinking-bubble";
+      thinkingIndicator.id = "thinkingElem";
+      thinkingIndicator.innerHTML = `
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <span class="thinking-text">An-Kuy AI Ұстаз жауап әзірлеуде...</span>
+      `;
+      chatMessages.appendChild(thinkingIndicator);
+      scrollChatToBottom();
+
+      try {
+        const systemPrompt = "Сен қазақтың дәстүрлі және заманауи 'An-Kuy Academy' музыкалық платформасының білікті әрі мейірімді AI ұстазысың. Оқушы Ақмаралдың сұрағына қазақ тілінде нақты, кәсіби және шабыттандыратын жауап бер.";
+        const apiKey = "gsk_placeholder_api_key";
+        
+        const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            model: "mixtral-8x7b-32768",
+            messages: [
+              { role: "system", content: systemPrompt },
+              { role: "user", content: text }
+            ],
+            temperature: 0.7,
+            max_tokens: 300
+          })
+        });
+
+        removeThinking();
+
+        if (!response.ok) {
+          throw new Error(`HTTP: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const reply = data.choices && data.choices[0]?.message?.content;
+        appendMessage(reply || "Жауап алу мүмкін болмады.", "bot");
+
+      } catch (err) {
+        removeThinking();
+        const fallbackReply = generateMusicTeacherAdvice(text);
+        appendMessage(fallbackReply, "bot");
+      }
+
+      scrollChatToBottom();
+    }
+
+    function removeThinking() {
+      const thinkingElem = document.getElementById("thinkingElem");
+      if (thinkingElem) thinkingElem.remove();
+    }
+
+    function appendMessage(msg, role) {
+      const bubble = document.createElement("div");
+      bubble.className = `chat-bubble ${role}`;
+      bubble.textContent = msg;
+      chatMessages.appendChild(bubble);
+      scrollChatToBottom();
+    }
+
+    function scrollChatToBottom() {
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function generateMusicTeacherAdvice(query) {
+      const q = query.toLowerCase();
+      if (q.includes("қағыс") || q.includes("қағу")) {
+        return "An-Kuy Академиясының алтын ережесі: білекті бос, еркін ұстаңыз. Қағыс тек саусақтан емес, білектің серпінді қозғалысынан тууы шарт. Алдымен қарқынын баяулатып, метрономмен 60 bpm жылдамдықта бекітуді ұсынамын!";
+      } else if (q.includes("бұрау") || q.includes("бұрауы")) {
+        return "Домбыраның классикалық бұрауы — кварта (1-ішек: Ре / D4, 2-ішек: Соль / G3). Кейбір шертпе күйлерге квинта немесе теріс бұрау (Ре - Ля) қолданылады. Біздің нота парағындағы бұрау көрсеткішіне назар аударыңыз.";
+      } else if (q.includes("қол") || q.includes("перне") || q.includes("саусақ")) {
+        return "Сол қолдың бас бармағы домбыра мойнының орта тұсында жеңіл тіреуіш болып тұруы керек. Пернелерді ладтың дәл қасынан, саусақ ұшының етімен нық басыңыз — дыбыс таза әрі сыңғырлайды.";
+      } else {
+        return `«${query}» туралы тамаша сұрақ! Музыка шеберлігі тұрақты жаттығудан басталады. An-Kuy платформасындағы бүгінгі қадамдарды толық аяқтап, өз өнеріңізді жаңа деңгейге көтеріңіз!`;
+      }
+    }
+  </script>
+</body></html>
